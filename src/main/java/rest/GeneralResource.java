@@ -14,6 +14,7 @@ import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
@@ -75,7 +76,7 @@ public class GeneralResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("movieByPartTitle/{title}")
-    public List<MovieDTO> getMovieById(@PathParam("title") String title) {
+    public List<MovieDTO> getMovieByTitle(@PathParam("title") String title) {
         
         return FACADE.getMovieByPartTitle(title);
  
@@ -92,11 +93,10 @@ public class GeneralResource {
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Path("movieByActor")
-    public List<MovieDTO> getMovieByGenre(ActorDTO actorDTO) {
-        System.out.println("ACTOR---------"+ actorDTO);
-        return FACADE.getMovieByActor(actorDTO);
+    @Path("movieByActor/{name}")
+    public List<MovieDTO> getMovieByActor(@PathParam("name") String name ) {
+        
+        return FACADE.getMovieByActor(name);
  
     }
     
@@ -123,6 +123,27 @@ public class GeneralResource {
     public List<GenreDTO> getAllGenre() {
         
         return FACADE.getAllGenres();
+ 
+    }
+    
+    @POST
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("addMovie")
+    public MovieDTO addMovie(MovieDTO movieDTO) {
+        
+        return FACADE.addMovie(movieDTO);
+ 
+    }
+    
+    
+    @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("editMovie/{id}")
+    public MovieDTO editMovie(@PathParam("id") int id, MovieDTO movieDTO) {
+        
+        return FACADE.editMovie(movieDTO, id);
  
     }
 }

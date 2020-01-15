@@ -14,12 +14,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author jacobfolkehildebrandt
  */
 @Entity
+@NamedQuery(name = "Director.deleteAllRows", query = "DELETE from Director")
 public class Director implements Serializable {
 
     private static final long serialVersionUID = 1L;

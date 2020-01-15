@@ -15,12 +15,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author jacobfolkehildebrandt
  */
 @Entity
+@NamedQuery(name = "Movie.deleteAllRows", query = "DELETE from Movie")
 public class Movie implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -129,6 +131,7 @@ public class Movie implements Serializable {
         }
         return true;
     }
+    
 
     @Override
     public String toString() {
