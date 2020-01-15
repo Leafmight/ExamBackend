@@ -202,6 +202,7 @@ public class GeneralFacade {
         Movie movie = em.find(Movie.class, id);
         movie.setTitle(movieDTO.getTitle());
         movie.setYear(movieDTO.getYear());
+        
 
         for (DirectorDTO directorDTO : movieDTO.getDirectors()) {
 
@@ -245,6 +246,9 @@ public class GeneralFacade {
         }
         return new MovieDTO(movie);
     }
+    
+    
+    
 
     public void fill() {
         EntityManager em = emf.createEntityManager();

@@ -6,6 +6,7 @@
 package DTO;
 
 import entities.Genre;
+import java.util.Objects;
 
 /**
  *
@@ -39,6 +40,34 @@ public class GenreDTO {
         this.name = name;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final GenreDTO other = (GenreDTO) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    
     @Override
     public String toString() {
         return "GenreDTO{" + "id=" + id + ", name=" + name + '}';

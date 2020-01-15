@@ -6,6 +6,7 @@
 package DTO;
 
 import entities.Actor;
+import java.util.Objects;
 
 /**
  *
@@ -49,6 +50,37 @@ public class ActorDTO {
         this.about = about;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ActorDTO other = (ActorDTO) obj;
+        if (!Objects.equals(this.name, other.name)) {
+            return false;
+        }
+        if (!Objects.equals(this.about, other.about)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+
+    
     @Override
     public String toString() {
         return "ActorDTO{" + "id=" + id + ", name=" + name + ", about=" + about + '}';

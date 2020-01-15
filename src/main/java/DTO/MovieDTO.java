@@ -11,6 +11,7 @@ import entities.Genre;
 import entities.Movie;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -91,6 +92,46 @@ public class MovieDTO {
         this.genres = genres;
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final MovieDTO other = (MovieDTO) obj;
+        if (this.year != other.year) {
+            return false;
+        }
+        if (!Objects.equals(this.title, other.title)) {
+            return false;
+        }
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        if (!Objects.equals(this.directors, other.directors)) {
+            return false;
+        }
+        if (!Objects.equals(this.actors, other.actors)) {
+            return false;
+        }
+        if (!Objects.equals(this.genres, other.genres)) {
+            return false;
+        }
+        return true;
+    }
+
+    
     @Override
     public String toString() {
         return "MovieDTO{" + "id=" + id + ", title=" + title + ", year=" + year + ", directors=" + directors + ", actors=" + actors + ", genres=" + genres + '}';
