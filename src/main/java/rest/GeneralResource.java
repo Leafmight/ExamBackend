@@ -6,6 +6,8 @@
 package rest;
 
 import DTO.ActorDTO;
+import DTO.DirectorDTO;
+import DTO.GenreDTO;
 import DTO.MovieDTO;
 import facades.GeneralFacade;
 import java.util.List;
@@ -98,4 +100,29 @@ public class GeneralResource {
  
     }
     
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("allDirectors")
+    public List<DirectorDTO> getAllDirectors() {
+        
+        return FACADE.getAllDirectors();
+ 
+    }
+     @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("allActors")
+    public List<ActorDTO> getAllActors() {
+        
+        return FACADE.getAllActors();
+ 
+    }
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("allGenres")
+    public List<GenreDTO> getAllGenre() {
+        
+        return FACADE.getAllGenres();
+ 
+    }
 }

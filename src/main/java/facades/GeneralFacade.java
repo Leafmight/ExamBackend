@@ -6,6 +6,8 @@
 package facades;
 
 import DTO.ActorDTO;
+import DTO.DirectorDTO;
+import DTO.GenreDTO;
 import DTO.MovieDTO;
 import entities.Actor;
 import entities.Director;
@@ -128,9 +130,48 @@ public class GeneralFacade {
         }
     }
     
+    public List<DirectorDTO> getAllDirectors() {
+        EntityManager em = emf.createEntityManager();
+        List<DirectorDTO> listDTO = new ArrayList<>();
+        try {
+            List<Director> list = em.createQuery("SELECT d FROM Director d").getResultList();
+            for (Director d : list) {
+                listDTO.add(new DirectorDTO(d));
+            }
+            return listDTO;
+        } finally {
+            em.close();
+        }
+    }
     
     
+    public List<ActorDTO> getAllActors() {
+        EntityManager em = emf.createEntityManager();
+        List<ActorDTO> listDTO = new ArrayList<>();
+        try {
+            List<Actor> list = em.createQuery("SELECT a FROM Actor a").getResultList();
+            for (Actor a : list) {
+                listDTO.add(new ActorDTO(a));
+            }
+            return listDTO;
+        } finally {
+            em.close();
+        }
+    }
     
+       public List<GenreDTO> getAllGenres() {
+        EntityManager em = emf.createEntityManager();
+        List<GenreDTO> listDTO = new ArrayList<>();
+        try {
+            List<Genre> list = em.createQuery("SELECT g FROM Genre g").getResultList();
+            for (Genre g : list) {
+                listDTO.add(new GenreDTO(g));
+            }
+            return listDTO;
+        } finally {
+            em.close();
+        }
+    }
     
     
     
