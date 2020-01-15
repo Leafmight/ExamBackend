@@ -11,6 +11,7 @@ import DTO.GenreDTO;
 import DTO.MovieDTO;
 import facades.GeneralFacade;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -127,6 +128,7 @@ public class GeneralResource {
     }
     
     @POST
+    @RolesAllowed("admin")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("addMovie")
@@ -140,6 +142,7 @@ public class GeneralResource {
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
+    @RolesAllowed("admin")
     @Path("editMovie/{id}")
     public MovieDTO editMovie(@PathParam("id") int id, MovieDTO movieDTO) {
         

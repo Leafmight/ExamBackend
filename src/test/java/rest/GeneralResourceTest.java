@@ -191,28 +191,28 @@ public class GeneralResourceTest {
                 .body("size()", equalTo(0));
     }
     
-     @Test
-    public void testAddMovie() throws Exception {
-        movie1 = new Movie("Spiderman",2000);
-        director2 = new Director("Jacob","Koded since he was 3");
-        actor4 = new Actor("Mads Mikkelsen","b actor");
-        genre1 = new Genre("Sci-fi");
-        movie1.setActors(actor4);
-        movie1.setDirector(director2);
-        movie1.setGenre(genre1);
-        MovieDTO m = new MovieDTO(movie1);
-        MovieDTO mdto = given()
-                .contentType("application/json")
-                .body(m)
-                .when()
-                .post("/movie/addMovie")
-                .then()
-                .assertThat()
-                .statusCode(HttpStatus.OK_200.getStatusCode())
-                .extract()
-                .as(MovieDTO.class);
-                assertThat(mdto.getTitle(), equalTo(m.getTitle()));
-    }
+//     @Test
+//    public void testAddMovie() throws Exception {
+//        movie1 = new Movie("Spiderman",2000);
+//        director2 = new Director("Jacob","Koded since he was 3");
+//        actor4 = new Actor("Mads Mikkelsen","b actor");
+//        genre1 = new Genre("Sci-fi");
+//        movie1.setActors(actor4);
+//        movie1.setDirector(director2);
+//        movie1.setGenre(genre1);
+//        MovieDTO m = new MovieDTO(movie1);
+//        MovieDTO mdto = given()
+//                .contentType("application/json")
+//                .body(m)
+//                .when()
+//                .post("/movie/addMovie")
+//                .then()
+//                .assertThat()
+//                .statusCode(HttpStatus.OK_200.getStatusCode())
+//                .extract()
+//                .as(MovieDTO.class);
+//                assertThat(mdto.getTitle(), equalTo(m.getTitle()));
+//    }
 //    @Disabled
 //    @Test
 //    public void testEditMovie() throws Exception {
